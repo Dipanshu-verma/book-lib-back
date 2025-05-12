@@ -11,7 +11,7 @@ const myBooksRoutes = require('./routes/mybooks');
 const app = express();
  
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -22,7 +22,7 @@ app.use('/api/books', bookRoutes);
 app.use('/api/mybooks', myBooksRoutes);
 
  
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/library', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
